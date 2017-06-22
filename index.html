@@ -35,7 +35,7 @@
         <!--  Google Android Tab Color  -->
         <meta name="theme-color" content="#272727"/>
 
-        <title>Ensino Científico-Humanístico · Simulador de Candidatura Uniarea</title>
+        <title>Ensino Profissional · Simulador de Candidatura Uniarea</title>
 
         <!--  Bootstrap & CSS -->
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -95,7 +95,7 @@
             <div class="container">
                 <h1>
                     Simulador de Candidatura Uni<span class="text-red">area</span><br>
-                    <small><i class="fa fa-book"></i> Ensino Científico-Humanístico</small>
+                    <small><i class="fa fa-book"></i> Ensino Profisional</small>
                 </h1>
             </div>
         </div>
@@ -103,10 +103,8 @@
             <h2>Instruções</h2>
             <p>
             <ol>
+                <li>Ajusta o número de disciplinas das diferentes áreas de formação e insere os nomes das mesmas para uma melhor compreensão.</li>
                 <li>Introduz a informação relativa às tuas notas nas disciplinas (0-20) e exames (0-200) e quais as provas de ingresso do curso que te pretendes candidatar.</li>
-                <ul>
-                    <li>As caixas de seleção servem para identificar que realizaste um exame na respetiva fase e condição (interno ou externo). Ao selecioná-la aparecerá o sítio para colocar a nota. Nos exames obrigatórios esta seleção prévia não é necessária.</li>
-                </ul>
                 <li>Depois de preencheres tudo, carrega em <strong>Calcular</strong> e serão mostrados os teus resultados.</li>
                 <li><i>Opcional:</i> Grava o teu resultado carregando em <strong>Guardar</strong> e este será transferido como um ficheiro de texto.</li>
             </ol>
@@ -127,323 +125,52 @@
             <br/>
 
             <table class="table table-striped">
+              <caption>
+                Componente Sociocultural
+              </caption>
                 <thead>
                     <tr>
                         <th>Disciplina</th>
-                        <th>10º Ano</th>
-                        <th>11º Ano</th>
-                        <th>12º Ano</th>
-                        <th>Interno 1ª Fase<b href="#" data-placement="top" data-toggle="tooltip" role="help" title="" class="small" data-original-title="Interno - condição com que se vai a exame no ano de conclusão da disciplina caso a CIF seja positiva. Neste caso, o exame conta 30% da CFD."><sup>(?)</sup></b></th>
-                        <th>Interno 2ª Fase<b href="#" data-placement="top" data-toggle="tooltip" role="help" title="" class="small" data-original-title="Interno - condição com que se vai a exame no ano de conclusão da disciplina caso a CIF seja positiva. Neste caso, o exame conta 30% da CFD."><sup>(?)</sup></b></th>
-                        <th>Externo 1ª Fase<b href="#" data-placement="top" data-toggle="tooltip" role="help" title="" class="small" data-original-title="Externo/Autoproposto - condição em que se vai fazer melhoria ou então fazer mesmo a disciplina caso a CIF tenha sido negativa ou o aluno a tenha anulado. Ao ser referida esta condição estão incluídos os casos de exame de equivalência à frequência. Neste caso, o exame conta 100% da CFD."><sup>(?)</sup></b></th>
-                        <th>Externo 2ª Fase<b href="#" data-placement="top" data-toggle="tooltip" role="help" title="" class="small" data-original-title="Externo/Autoproposto - condição em que se vai fazer melhoria ou então fazer mesmo a disciplina caso a CIF tenha sido negativa ou o aluno a tenha anulado. Ao ser referida esta condição estão incluídos os casos de exame de equivalência à frequência. Neste caso, o exame conta 100% da CFD."><sup>(?)</sup></b></th>
-                        <th>Prova de Ingresso</th>
+                        <th>Nota<b href="#" data-placement="top" data-toggle="tooltip" role="help" title="" class="small" data-original-title="Insere a nota que obtiveste. Caso a avaliação tenha sido distribuída por mais do que um ano, deves inserir a média, arredondada às unidades, das respetivas notas"><sup>(?)</sup></b></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Português</td>
-                        <td><input class="grade" min="1" max="20" type="number" name="grade0[]" value="10"/></td>
-                        <td><input class="grade" min="1" max="20" type="number" name="grade0[]" value="10"/></td>
-                        <td><input class="grade" min="1" max="20" type="number" name="grade0[]" value="10"/></td>
-
-                        <td>
-                            <input class="checker" type="checkbox" name="exam0[]" checked hidden>
-                            <input class="grade" type="number" id="examept" min="0" max="200" name="exam0[]" value="100"/>
-                        </td>
-
-                        <td>
-                            <input class="checkerPhase2" type="checkbox" name="exam0[]">
-                            <input class="grade" type="number" value="100" name="exam0[]" hidden>
-                            <input type="checkbox" name="exam0[]" hidden>
-                            <b href="#" data-placement="right" data-toggle="tooltip" role="help" title="" class="small" data-original-title="Assinalar a caixa se o exame foi realizado em ano anterior ao ano de candidatura." hidden>(?)</b>
-                        </td>
-                        <td>
-                            <input class="checker" type="checkbox" name="exam0[]">
-                            <input class="grade" type="number" value="100" name="exam0[]" hidden>
-                        </td>
-                        <td>
-                            <input class="checkerPhase2" type="checkbox" name="exam0[]" >
-                            <input class="grade" type="number" value="100" name="exam0[]" hidden>
-                            <input type="checkbox" name="exam0[]" hidden>
-                            <b href="#" data-placement="right" data-toggle="tooltip" role="help" title="" class="small" data-original-title="Assinalar a caixa se o exame foi realizado em ano anterior ao ano de candidatura." hidden>(?)</b>
-                        </td>
-                        <td>
-                            <input type="radio" name="access0[]" value="yes" /> Sim
-                            <input type="radio" name="access0[]" value="no" value="no" checked/> Não
-                        </td>
-
+                      <td>Português</td>
+                      <td><input class="grade" min="1" max="20" type="number" name="grade0[]" value="10"/></td>
                     </tr>
                     <tr>
-                        <td>Filosofia</td>
-                        <td><input class="grade" min="1" max="20" type="number" name="grade1[]" value="10"/></td>
-                        <td><input class="grade" min="1" max="20" type="number" name="grade1[]" value="10"/></td>
-                        <td></td>
-
-                        <td>
-                            <input class="checker" type="checkbox" name="exam1[]">
-                            <input class="grade" type="number" min="0" max="200" name="exam1[]" value="100" hidden/>
-                        </td>
-
-                        <td>
-                            <input class="checkerPhase2" type="checkbox" name="exam1[]">
-                            <input class="grade" type="number" value="100" name="exam1[]" hidden>
-                            <input type="checkbox" name="exam1[]" hidden>
-                            <b href="#" data-placement="right" data-toggle="tooltip" role="help" title="" class="small" data-original-title="Assinalar a caixa se o exame foi realizado em ano anterior ao ano de candidatura." hidden>(?)</b>
-                        </td>
-                        <td>
-                            <input class="checker" type="checkbox" name="exam1[]">
-                            <input class="grade" type="number" value="100" name="exam1[]" hidden>
-                        </td>
-                        <td>
-                            <input class="checkerPhase2" type="checkbox" name="exam1[]">
-                            <input class="grade" type="number" value="100" name="exam1[]" hidden>
-                            <input type="checkbox" name="exam1[]" hidden>
-                            <b href="#" data-placement="right" data-toggle="tooltip" role="help" title="" class="small" data-original-title="Assinalar a caixa se o exame foi realizado em ano anterior ao ano de candidatura." hidden>(?)</b>
-                        </td>
-                        <td>
-                            <input type="radio" name="access1[]" value="yes" /> Sim
-                            <input type="radio" name="access1[]" value="no" checked/> Não
-                        </td>
+                      <td>Língua Estrangeira</td>
+                      <td><input class="grade" min="1" max="20" type="number" name="grade1[]" value="10"/></td>
                     </tr>
                     <tr>
-                        <td><b href="#" data-placement="right" data-toggle="tooltip" role="help" title="" data-original-title="A disciplina de dois anos de uma língua estrangeira. Exemplos: Inglês, Espanhol, Francês"><sup>(?)</sup></b>Língua Estrangeira</td>
-                        <td><input class="grade" min="1" max="20" type="number" name="grade2[]" value="10"/></td>
-                        <td><input class="grade" min="1" max="20" type="number" name="grade2[]" value="10"/></td>
-                        <td></td>
-
-                        <td>
-                            <input class="checker" type="checkbox" name="exam2[]" hidden>
-                            <input type="number" min="0" max="200" name="exam2[]" value="100" hidden/>
-                        </td>
-
-                        <td>
-                            <input class="checkerPhase2" type="checkbox" name="exam2[]" hidden>
-                            <input class="grade" type="number" value="100" name="exam2[]" hidden>
-                            <input type="checkbox" name="exam2[]" hidden>
-                            <b href="#" data-placement="right" data-toggle="tooltip" role="help" title="" class="small" data-original-title="Assinalar a caixa se o exame foi realizado em ano anterior ao ano de candidatura." hidden>(?)</b>
-                        </td>
-                        <td>
-                            <input class="checker" type="checkbox" name="exam2[]">
-                            <input class="grade" type="number" value="100" name="exam2[]" hidden>
-                        </td>
-                        <td>
-                            <input class="checkerPhase2" type="checkbox" name="exam2[]">
-                            <input class="grade" type="number" value="100" name="exam2[]" hidden>
-                            <input type="checkbox" name="exam2[]" hidden>
-                            <b href="#" data-placement="right" data-toggle="tooltip" role="help" title="" class="small" data-original-title="Assinalar a caixa se o exame foi realizado em ano anterior ao ano de candidatura." hidden>(?)</b>
-                        </td>
-                        <td>
-                        </td>
+                      <td>Área de Integração</td>
+                      <td><input class="grade" min="1" max="20" type="number" name="grade2[]" value="10"/></td>
                     </tr>
                     <tr>
-                        <td>Educação Física</td>
-                        <td><input class="grade" min="1" max="20" type="number" name="grade3[]" value="10"/></td>
-                        <td><input class="grade" min="1" max="20" type="number" name="grade3[]" value="10"/></td>
-                        <td><input class="grade" min="1" max="20" type="number" name="grade3[]" value="10"/></td>
-                        <td>
-                            <input class="checker" type="checkbox" name="exam3[]" hidden>
-                            <input type="number" min="0" max="200" name="exam3[]" value="100" hidden/>
-                        </td>
-
-                        <td>
-                            <input class="checkerPhase2" type="checkbox" name="exam3[]" hidden>
-                            <input class="grade" type="number" value="100" name="exam3[]" hidden>
-                            <input type="checkbox" name="exam3[]" hidden>
-                            <b href="#" data-placement="right" data-toggle="tooltip" role="help" title="" class="small" data-original-title="Assinalar a caixa se o exame foi realizado em ano anterior ao ano de candidatura." hidden>(?)</b>
-                        </td>
-                        <td>
-                            <input class="checker" type="checkbox" name="exam3[]">
-                            <input class="grade" type="number" value="100" name="exam3[]" hidden>
-                        </td>
-                        <td>
-                            <input class="checkerPhase2" type="checkbox" name="exam3[]">
-                            <input class="grade" type="number" value="100" name="exam3[]" hidden>
-                            <input type="checkbox" name="exam3[]" hidden>
-                            <b href="#" data-placement="right" data-toggle="tooltip" role="help" title="" class="small" data-original-title="Assinalar a caixa se o exame foi realizado em ano anterior ao ano de candidatura." hidden>(?)</b>
-                        </td>
-                        <td>
-                        </td>
-
+                      <td>TIC<b href="#" data-placement="top" data-toggle="tooltip" role="help" title="" class="small" data-original-title="Tecnologias de Informação e Comunicação"><sup>(?)</sup></b></td>
+                      <td><input class="grade" min="1" max="20" type="number" name="grade3[]" value="10"/></td>
                     </tr>
                     <tr>
-                        <td><b href="#" data-placement="right" data-toggle="tooltip" role="help" title="" data-original-title="A disciplina de três anos específica de cada curso. Exemplos: Matemática A, História A, Desenho A"><sup>(?)</sup></b>Trienal Específica</td>
-
-                        <td><input class="grade" min="1" max="20" type="number" name="grade4[]" value="10"/></td>
-                        <td><input class="grade" min="1" max="20" type="number" name="grade4[]" value="10"/></td>
-                        <td><input class="grade" min="1" max="20" type="number" name="grade4[]" value="10"/></td>
-
-                        <td>
-                            <input class="checker" type="checkbox" name="exam4[]" checked hidden>
-                            <input class="grade" type="number" min="0" max="200" name="exam4[]" value="100"/>
-                        </td>
-
-                        <td>
-                            <input class="checkerPhase2" type="checkbox" name="exam4[]">
-                            <input class="grade" type="number" value="100" name="exam4[]" hidden>
-                            <input type="checkbox" name="exam4[]" hidden>
-                            <b href="#" data-placement="right" data-toggle="tooltip" role="help" title="" class="small" data-original-title="Assinalar a caixa se o exame foi realizado em ano anterior ao ano de candidatura." hidden>(?)</b>
-                        </td>
-                        <td>
-                            <input class="checker" type="checkbox" name="exam4[]">
-                            <input class="grade" type="number" value="100" name="exam4[]" hidden>
-                        </td>
-                        <td>
-                            <input class="checkerPhase2" type="checkbox" name="exam4[]">
-                            <input class="grade" type="number" value="100" name="exam4[]" hidden>
-                            <input type="checkbox" name="exam4[]" hidden>
-                            <b href="#" data-placement="right" data-toggle="tooltip" role="help" title="" class="small" data-original-title="Assinalar a caixa se o exame foi realizado em ano anterior ao ano de candidatura." hidden>(?)</b>
-                        </td>
-                        <td>
-                            <input type="radio" name="access4[]" value="yes" /> Sim
-                            <input type="radio" name="access4[]" value="no" checked/> Não
-                        </td>
-
-                    </tr>
-                    <tr>
-                        <td><b href="#" data-placement="right" data-toggle="tooltip" role="help" title="" data-original-title="Uma das disciplinas de dois anos específica de cada curso. Exemplos: Físico-Química A, Economia A, Geografia"><sup>(?)</sup></b>Bienal 1</td>
-                        <td><input class="grade" min="1" max="20" type="number" name="grade5[]" value="10"/></td>
-                        <td><input class="grade" min="1" max="20" type="number" name="grade5[]" value="10"/></td>
-                        <td></td>
-
-                        <td>
-                            <input class="checker" type="checkbox" name="exam5[]" checked>
-                            <input class="grade" type="number" min="0" max="200" name="exam5[]" value="100"/></td>
-
-                        <td>
-                            <input class="checkerPhase2" type="checkbox" name="exam5[]">
-                            <input class="grade" type="number" value="100" name="exam5[]" hidden>
-                            <input type="checkbox" name="exam5[]" hidden>
-                            <b href="#" data-placement="right" data-toggle="tooltip" role="help" title="" class="small" data-original-title="Assinalar a caixa se o exame foi realizado em ano anterior ao ano de candidatura." hidden>(?)</b>
-                        </td>
-                        <td>
-                            <input class="checker" type="checkbox" name="exam5[]">
-                            <input class="grade" type="number" value="100" name="exam5[]" hidden>
-                        </td>
-                        <td>
-                            <input class="checkerPhase2" type="checkbox" name="exam5[]">
-                            <input class="grade" type="number" value="100" name="exam5[]" hidden>
-                            <input type="checkbox" name="exam5[]" hidden>
-                            <b href="#" data-placement="right" data-toggle="tooltip" role="help" title="" class="small" data-original-title="Assinalar a caixa se o exame foi realizado em ano anterior ao ano de candidatura." hidden>(?)</b>
-                        </td>
-                        <td>
-                            <input type="radio" name="access5[]" value="yes" /> Sim
-                            <input type="radio" name="access5[]" value="no" checked/> Não
-                        </td>
-
-                    </tr>
-                    <tr>
-                        <td><b href="#" data-placement="right" data-toggle="tooltip" role="help" title="" data-original-title="Uma das disciplinas de dois anos específica de cada curso. Exemplos: Biologia e Geologia, Geometria Descritiva, MACS, Literatura"><sup>(?)</sup></b>Bienal 2</td>
-                        <td><input class="grade" min="1" max="20" type="number" name="grade6[]" value="10"/></td>
-                        <td><input class="grade" min="1" max="20" type="number" name="grade6[]" value="10"/></td>
-                        <td></td>
-
-                        <td>
-                            <input class="checker" type="checkbox" name="exam6[]" checked>
-                            <input class="grade" type="number" min="0" max="200" name="exam6[]" value="100"/></td>
-
-                        <td>
-                            <input class="checkerPhase2" type="checkbox" name="exam6[]">
-                            <input class="grade" type="number" value="100" name="exam6[]" hidden>
-                            <input type="checkbox" name="exam6[]" hidden>
-                            <b href="#" data-placement="right" data-toggle="tooltip" role="help" title="" class="small" data-original-title="Assinalar a caixa se o exame foi realizado em ano anterior ao ano de candidatura." hidden>(?)</b>
-                        </td>
-                        <td>
-                            <input class="checker" type="checkbox" name="exam6[]">
-                            <input class="grade" type="number" value="100" name="exam6[]" hidden>
-                        </td>
-                        <td>
-                            <input class="checkerPhase2" type="checkbox" name="exam6[]">
-                            <input class="grade" type="number" value="100" name="exam6[]" hidden>
-                            <input type="checkbox" name="exam6[]" hidden>
-                            <b href="#" data-placement="right" data-toggle="tooltip" role="help" title="" class="small" data-original-title="Assinalar a caixa se o exame foi realizado em ano anterior ao ano de candidatura." hidden>(?)</b>
-                        </td>
-                        <td>
-                            <input type="radio" name="access6[]" value="yes" /> Sim
-                            <input type="radio" name="access6[]" value="no" checked/> Não
-                        </td>
-
-                    </tr>
-                    <tr>
-                        <td><b href="#" data-placement="right" data-toggle="tooltip" role="help" title="" data-original-title="Uma das disciplinas de último ano específica de cada curso. Exemplos: Biologia, Física, Aplicações Informáticas B, Psicologia, Sociologia, Geologia"><sup>(?)</sup></b>Opção 1</td>
-                        <td></td>
-                        <td></td>
-                        <td><input class="grade" min="1" max="20" type="number" name="grade7[]" value="10"/></td>
-
-                        <td>
-                            <input class="checker" type="checkbox" name="exam7[]" hidden>
-                            <input class="grade" type="number" min="0" max="200" name="exam7[]" value="100" hidden/>
-                        </td>
-
-                        <td>
-                            <input class="checkerPhase2" type="checkbox" name="exam7[]" hidden>
-                            <input class="grade" type="number" value="100" name="exam7[]" hidden>
-                            <input type="checkbox" name="exam7[]" hidden>
-                            <b href="#" data-placement="right" data-toggle="tooltip" role="help" title="" class="small" data-original-title="Assinalar a caixa se o exame foi realizado em ano anterior ao ano de candidatura." hidden>(?)</b>
-                        </td>
-                        <td>
-                            <input class="checker" type="checkbox" name="exam7[]">
-                            <input class="grade" type="number" value="100" name="exam7[]" hidden>
-                        </td>
-                        <td>
-                            <input class="checkerPhase2" type="checkbox" name="exam7[]">
-                            <input class="grade" type="number" value="100" name="exam7[]" hidden>
-                            <input type="checkbox" name="exam7[]" hidden>
-                            <b href="#" data-placement="right" data-toggle="tooltip" role="help" title="" class="small" data-original-title="Assinalar a caixa se o exame foi realizado em ano anterior ao ano de candidatura." hidden>(?)</b>
-                        </td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td><b href="#" data-placement="right" data-toggle="tooltip" role="help" title="" data-original-title="A segunda disciplina de último ano específica de cada curso. Exemplos: Biologia, Física, Aplicações Informáticas B, Psicologia, Sociologia, Geologia"><sup>(?)</sup></b>Opção 2</td>
-                        <td></td>
-                        <td></td>
-                        <td><input class="grade" min="1" max="20" type="number" name="grade8[]" value="10"/></td>
-
-                        <td>
-                            <input class="checker" type="checkbox" name="exam8[]" hidden>
-                            <input class="grade" type="number" min="0" max="200" name="exam8[]" value="100" hidden/>
-                        </td>
-
-                        <td>
-                            <input class="checkerPhase2" type="checkbox" name="exam8[]" hidden>
-                            <input class="grade" type="number" value="100" name="exam8[]" hidden>
-                            <input type="checkbox" name="exam8[]" hidden>
-                            <b href="#" data-placement="right" data-toggle="tooltip" role="help" title="" class="small" data-original-title="Assinalar a caixa se o exame foi realizado em ano anterior ao ano de candidatura." hidden>(?)</b>
-                        </td>
-                        <td>
-                            <input class="checker" type="checkbox" name="exam8[]">
-                            <input class="grade" type="number" value="100" name="exam8[]" hidden>
-                        </td>
-                        <td>
-                            <input class="checkerPhase2" type="checkbox" name="exam8[]">
-                            <input class="grade" type="number" value="100" name="exam8[]" hidden>
-                            <input type="checkbox" name="exam8[]" hidden>
-                            <b href="#" data-placement="right" data-toggle="tooltip" role="help" title="" class="small" data-original-title="Assinalar a caixa se o exame foi realizado em ano anterior ao ano de candidatura." hidden>(?)</b>
-                        </td>
-                        <td></td>
+                      <td>Educação Física</td>
+                      <td><input class="grade" min="1" max="20" type="number" name="grade4[]" value="10"/></td>
                     </tr>
                 </tbody>
             </table>
-            <div class="row">
-                <div class="col-md-5 col-lg-5">
-                    <p>
-                    <strong>
-                        Realizaste provas de ingresso fora do plano de estudos?
-                    </strong>
-                    </p>
-                </div>
 
-                <div class="col-lg-3 col-md-3">
-                    <div class="btn-group" data-toggle="buttons">
-                        <button id="option1" class="btn btn-default">
-                            <input type="radio" name="options" autocomplete="off"> Sim
-                        </button>
-                        <button id="option2" class="btn btn-default active">
-                            <input type="radio" name="options"autocomplete="off" checked> Não
-                        </button>
-                    </div>
-                </div>
-            </div>
+            <table class="table table-striped">
+              <caption>
+                Componente Científica
+              </caption>
+                <thead>
+                    <tr>
+                        <th>Disciplina</th>
+                        <th>Nota<b href="#" data-placement="top" data-toggle="tooltip" role="help" title="" class="small" data-original-title="Insere a nota que obtiveste. Caso a avaliação tenha sido distribuída por mais do que um ano, deves inserir a média, arredondada às unidades, das respetivas notas"><sup>(?)</sup></b></th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
 
             <div class="collapse" id="bottomTable">
                 <div class="well">
