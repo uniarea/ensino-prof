@@ -1,4 +1,3 @@
-
 //Clipboardjs
 var clipboard = new Clipboard('.clip', {
   text: function() {
@@ -14,6 +13,7 @@ clipboard.on('error', function(e) {
   console.log(e);
 });
 
+var nrSubjects = 10;
 
 $(document).ready(function() {
     //Bootstap's tooltip
@@ -29,6 +29,19 @@ $(document).ready(function() {
     });
 });
 
+var addSubject = function(){
+  if(nrSubjects < 12){
+    $("#extra-subjects").append("<tr><td><input class=\"subject-name\" type=\"text\" placeholder=\"Nome disciplina\"</td><td><input class=\"grade\" min=\"1\" max=\"20\" type=\"number\" name=\"grade"+(nrSubjects-1)+"[]\" value=\"10\"/></td></tr>");
+    nrSubjects++;
+  }
+}
+
+var removeSubject = function(){
+  if(nrSubjects > 10){
+    $("#extra-subjects").children().last().remove();
+    nrSubjects--;
+  }
+}
 
 //Verify input
 //TODO: Update to current model

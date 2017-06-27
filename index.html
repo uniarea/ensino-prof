@@ -103,7 +103,7 @@
             <h2>Instruções</h2>
             <p>
             <ol>
-                <li>Ajusta o número de disciplinas das diferentes áreas de formação e insere os nomes das mesmas para uma melhor compreensão.</li>
+                <li>Ajusta o número de disciplinas na componente científico-técnica de acordo com o teu plano de estudos e insere os nomes das disciplinas para uma melhor compreensão.</li>
                 <li>Introduz a informação relativa às tuas notas nas disciplinas (0-20) e exames (0-200) e quais as provas de ingresso do curso que te pretendes candidatar.</li>
                 <li>Depois de preencheres tudo, carrega em <strong>Calcular</strong> e serão mostrados os teus resultados.</li>
                 <li><i>Opcional:</i> Grava o teu resultado carregando em <strong>Guardar</strong> e este será transferido como um ficheiro de texto.</li>
@@ -148,7 +148,7 @@
                       <td><input class="grade" min="1" max="20" type="number" name="grade2[]" value="10"/></td>
                     </tr>
                     <tr>
-                      <td>TIC<b href="#" data-placement="top" data-toggle="tooltip" role="help" title="" class="small" data-original-title="Tecnologias de Informação e Comunicação"><sup>(?)</sup></b></td>
+                      <td>TIC<b href="#" data-placement="top" data-toggle="tooltip" role="help" title="" class="small" data-original-title="Tecnologias de Informação e Comunicação. Dependendo da oferta da escola poderás ter tido outra disciplina equivalente. Insere na mesma a nota nesta linha."><sup>(?)</sup></b></td>
                       <td><input class="grade" min="1" max="20" type="number" name="grade3[]" value="10"/></td>
                     </tr>
                     <tr>
@@ -160,7 +160,7 @@
 
             <table class="table table-striped">
               <caption>
-                Componente Científica
+                Componente Científico-Técnica<b href="#" data-placement="top" data-toggle="tooltip" role="help" title="" class="small" data-original-title="Disciplinas das componentes científica e técnica. Por lei o número de disciplinas é variável, com um mínimo de 5 e um máximo de 7"><sup>(?)</sup></b>
               </caption>
                 <thead>
                     <tr>
@@ -168,9 +168,31 @@
                         <th>Nota<b href="#" data-placement="top" data-toggle="tooltip" role="help" title="" class="small" data-original-title="Insere a nota que obtiveste. Caso a avaliação tenha sido distribuída por mais do que um ano, deves inserir a média, arredondada às unidades, das respetivas notas"><sup>(?)</sup></b></th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="extra-subjects">
+                  <tr>
+                    <td><input class="subject-name" type="text" placeholder="Nome disciplina"</td>
+                    <td><input class="grade" min="1" max="20" type="number" name="grade5[]" value="10"/></td>
+                  </tr>
+                  <tr>
+                    <td><input class="subject-name" type="text" placeholder="Nome disciplina"</td>
+                    <td><input class="grade" min="1" max="20" type="number" name="grade6[]" value="10"/></td>
+                  </tr>
+                  <tr>
+                    <td><input class="subject-name" type="text" placeholder="Nome disciplina"</td>
+                    <td><input class="grade" min="1" max="20" type="number" name="grade7[]" value="10"/></td>
+                  </tr>
+                  <tr>
+                    <td><input class="subject-name" type="text" placeholder="Nome disciplina"</td>
+                    <td><input class="grade" min="1" max="20" type="number" name="grade8[]" value="10"/></td>
+                  </tr>
+                  <tr>
+                    <td><input class="subject-name" type="text" placeholder="Nome disciplina"</td>
+                    <td><input class="grade" min="1" max="20" type="number" name="grade9[]" value="10"/></td>
+                  </tr>
                 </tbody>
             </table>
+            <button id="add-subject" class="btn btn-default" onclick="addSubject()">Adicionar disciplina</button>
+            <button id="remove-subject" class="btn btn-default" onclick="removeSubject()">Remover disciplina</button>
 
             <div class="collapse" id="bottomTable">
                 <div class="well">
@@ -326,7 +348,6 @@
 
         <footer class="footer text-center">
             <div class="container">
-                <i class="fa fa-code"></i> by <a href="http://antonioalmeida.me"><i class="fa fa-user"></i></a> & <a href="http://cyrilico.github.io"><i class="fa fa-user"></i></a> para a <a href="http://uniarea.com">Uni<span class=text-red>area</span></a>
             </div>
         </footer>
 
