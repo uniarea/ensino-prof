@@ -15,6 +15,7 @@ clipboard.on('error', function(e) {
 
 var nrSubjects = 10;
 var before1213 = false;
+var before1213table = $("#exams-table").html();
 var after1213table = "<tr><td></td><td>Português</td><td><input class=\"checker\" type=\"checkbox\" name=\"exam0[]\"><input class=\"grade\" type=\"number\" min=\"0\" max=\"200\" name=\"exam0[]\" hidden></td><td>\
         <input class=\"checker\" type=\"checkbox\" name=\"exam0[]\">\
         <input class=\"grade\" type=\"number\" min=\"0\" max=\"200\" name=\"exam0[]\" hidden>\
@@ -103,15 +104,14 @@ var removeSubject = function(){
 
 var setOlderTable = function(){
   if(!before1213){
-    //$("#exams-table").html(before1213table);
-    $("#exams-table").html("<p>SUCKAAAAAAAAAAA</p>");
+    $("#exams-table").html(before1213table);
     before1213 = true;
   }
 }
 
 var setNewerTable = function(){
   if(before1213){
-    $("#exams-table").html(after1213table);
+    $("#exams-table").html("SUCKAAAAAAAAAA");
     before1213 = false;
   }
 }
