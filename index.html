@@ -157,7 +157,7 @@
             </tbody>
         </table>
 
-            <h4>Componente Científico-Técnica<b href="#" data-placement="top" data-toggle="tooltip" role="help" title="" class="small" data-original-title="Disciplinas das componentes científica e técnica. Por lei o número de disciplinas é variável, com um mínimo de 5 e um máximo de 7"><sup>(?)</sup></b>
+            <h4>Componente Científico-Técnica<b href="#" data-placement="top" data-toggle="tooltip" role="help" title="" class="small" data-original-title="Disciplinas das componentes científica e técnica. O número de disciplinas (excetuando a formação em contexto de trabalho) pode ser variável consoante o curso, com um mínimo de 5 e um máximo de 7 estipulado por lei. Lembra-te que podes ajustar o número de disciplinas com os botões imediatamente abaixo desta tabela"><sup>(?)</sup></b>
             </h4>
         <table class="table table-striped">
             <hr>
@@ -195,6 +195,27 @@
             <button id="add-subject" class="btn btn-default" onclick="addSubject()"><i class="fa fa-plus"></i> </button>
             <button id="remove-subject" class="btn btn-default" onclick="removeSubject()"><i class="fa fa-minus"></i></button>
         </h5>
+
+        <h4>Componente Profissional (lel arranjar um nome melhor)</h4>
+        <hr>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Disciplina</th>
+                    <th>Nota<b href="#" data-placement="top" data-toggle="tooltip" role="help" title="" class="small" data-original-title="Insere a nota que obtiveste arredondada às unidades(!!)"><sup>(?)</sup></b></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><p class="subject-name">FCT<b href="#" data-placement="top" data-toggle="tooltip" role="help" title="" class="small" data-original-title="Formação em Contexto de Trabalho"><sup>(?)</sup></b></p></td>
+                    <td><input class="grade" min="1" max="20" type="number" id="fct-grade" value="10"/></td>
+                </tr>
+                <tr>
+                    <td>PAP<b href="#" data-placement="top" data-toggle="tooltip" role="help" title="" class="small" data-original-title="Prova de Aptidão Profissional"><sup>(?)</sup></b></td>
+                    <td><input class="grade" min="1" max="20" type="number" id="pap-grade" value="10"/></td>
+                </tr>
+            </tbody>
+        </table>
 
         <h4>Exames para acesso ao ensino superior/Provas de Ingresso</h4>
         <hr>
