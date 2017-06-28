@@ -194,72 +194,114 @@
             <button id="add-subject" class="btn btn-default" onclick="addSubject()">Adicionar disciplina</button>
             <button id="remove-subject" class="btn btn-default" onclick="removeSubject()">Remover disciplina</button>
 
-            <div class="collapse" id="bottomTable">
-                <div class="well">
+            <hr>
+            <div class="row">
+                <div class="col-md-3 col-lg-3">
+                    <p>
+                    <strong>
+                        Concluíste o ensino secundário...
+                    </strong>
+                    </p>
+                </div>
+
+                <div class="col-lg-5 col-md-5">
+                    <div class="btn-group" data-toggle="buttons">
+                        <button id="option1" class="btn btn-default" onclick="setOlderTable()">
+                            <input type="radio" name="options" autocomplete="off" checked> Antes de 2012/2013
+                        </button>
+                        <button id="option2" class="btn btn-default active" onclick="setNewerTable()">
+                            <input type="radio" name="options"autocomplete="off"> Em/após 2012/2013
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+              <div class="well">
                     <div class="row">
-                        <div class="col-lg-6 col-md-6">
                             <!-- Table for ingress exams made out of the student's course's context-->
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
-                                        <th>Realizou exame?</th>
-                                        <th>Exame 1ªFase</th>
+                                        <th>Realizou exame?<b href="#" data-placement="top" data-toggle="tooltip" role="help" title="" class="small" data-original-title="A tabela tem linhas extra no caso de teres realizado mais exames que os obrigatórios para fins de prova de ingresso. Assinala Sim nesta coluna nas linhas em que preencheres com as notas desses exames extra"><sup>(?)</sup></th>
+                                        <th>Nome Disciplina</th>
+                                        <th>Exame 1ª Fase</th>
                                         <th>Exame 2ª Fase</th>
+                                        <th>Prova de ingresso</th>
                                     </tr>
                                 </thead>
+                                <tbody id="exams-table">
                                 <tr>
                                     <td>
-                                        <input type="radio" name="access9[]" value="yes"/> Sim
-                                        <input type="radio" name="access9[]" value="no" checked/> Não
+                                    </td>
+                                    <td>Português</td>
+                                    <td>
+                                        <input class="checker" type="checkbox" name="exam0[]">
+                                        <input class="grade" type="number" min="0" max="200" name="exam0[]" hidden>
                                     </td>
                                     <td>
-                                        <input class="checker" type="checkbox" name="exam9[]">
-                                        <input class="grade" type="number" min="0" max="200" name="exam9[]" hidden>
+                                        <input class="checker" type="checkbox" name="exam0[]">
+                                        <input class="grade" type="number" min="0" max="200" name="exam0[]" hidden>
                                     </td>
                                     <td>
-                                        <input class="checker" type="checkbox" name="exam9[]">
-                                        <input class="grade" type="number" min="0" max="200" name="exam9[]" hidden>
+                                        <input type="radio" name="access0[]" value="yes"/> Sim
+                                        <input type="radio" name="access0[]" value="no" checked/> Não
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <input type="radio" name="access10[]" value="yes"/> Sim
-                                        <input type="radio" name="access10[]" value="no" checked/> Não
+                                    </td>
+                                    <td>Disciplina #2<b href="#" data-placement="top" data-toggle="tooltip" role="help" title="" class="small" data-original-title="Segundo o regulamento, um qualquer exame (exceto Português) entre a oferta dentro dos diferentes cursos científico-humanísticos"><sup>(?)</sup></td>
+                                    <td>
+                                        <input class="checker" type="checkbox" name="exam1[]">
+                                        <input class="grade" type="number" min="0" max="200" name="exam1[]" hidden>
                                     </td>
                                     <td>
-                                        <input class="checker" type="checkbox" name="exam10[]">
-                                        <input class="grade" type="number" min="0" max="200" name="exam10[]" hidden>
+                                        <input class="checker" type="checkbox" name="exam1[]">
+                                        <input class="grade" type="number" min="0" max="200" name="exam1[]" hidden>
                                     </td>
                                     <td>
-                                        <input class="checker" type="checkbox" name="exam10[]">
-                                        <input class="grade" type="number" min="0" max="200" name="exam10[]" hidden>
+                                        <input type="radio" name="access1[]" value="yes"/> Sim
+                                        <input type="radio" name="access1[]" value="no" checked/> Não
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <input type="radio" name="access11[]" value="yes"/> Sim
-                                        <input type="radio" name="access11[]" value="no" checked/> Não
+                                        <input type="radio" name="access2[]" value="yes"/> Sim
+                                        <input type="radio" name="access2[]" value="no" checked/> Não
                                     </td>
                                     <td>
-                                        <input class="checker" type="checkbox" name="exam11[]">
-                                        <input class="grade" type="number" min="0" max="200" name="exam11[]" hidden>
+                                      <input class="subject-name" type="text" placeholder="Nome disciplina">
                                     </td>
                                     <td>
-                                        <input class="checker" type="checkbox" name="exam11[]">
-                                        <input class="grade" type="number" min="0" max="200" name="exam11[]" hidden>
+                                        <input class="checker" type="checkbox" name="exam2[]">
+                                        <input class="grade" type="number" min="0" max="200" name="exam2[]" hidden>
+                                    </td>
+                                    <td>
+                                        <input class="checker" type="checkbox" name="exam2[]">
+                                        <input class="grade" type="number" min="0" max="200" name="exam2[]" hidden>
                                     </td>
                                 </tr>
+                                <tr>
+                                    <td>
+                                        <input type="radio" name="access3[]" value="yes"/> Sim
+                                        <input type="radio" name="access3[]" value="no" checked/> Não
+                                    </td>
+                                    <td>
+                                      <input class="subject-name" type="text" placeholder="Nome disciplina">
+                                    </td>
+                                    <td>
+                                        <input class="checker" type="checkbox" name="exam3[]">
+                                        <input class="grade" type="number" min="0" max="200" name="exam3[]" hidden>
+                                    </td>
+                                    <td>
+                                        <input class="checker" type="checkbox" name="exam3[]">
+                                        <input class="grade" type="number" min="0" max="200" name="exam3[]" hidden>
+                                    </td>
+                                </tr>
+                              </tbody>
                             </table>
-                        </div>
-
-                        <div class="vertically-center col-lg-6 col-md-6">
-                            <p>
-                            <strong>Nota:</strong> Se realizaste um exame fora do teu plano de estudos para prova de ingresso apenas na 2ª fase devido a sobreposição com outro exame na 1ª fase que realizaste mas que podes/vais utilizar na 1ª fase de candidatura (mais informações <a href='http://uniarea.com/vale-a-pena-ir-a-2a-fase-dos-exames-nacionais/'><strong>aqui</strong></a>), deves colocar a nota desse exame na tabela como tendo sido feito na 1ª fase, correndo risco de, em caso contrário, o cálculo final estar errado.
-                            </p>
-                        </div>
                     </div>
                 </div>
-            </div>
 
             <div class="col-lg-12 col-md-12 text-center" id="calculate">
                 <h5><span href="#" data-placement="top" data-toggle="tooltip" role="help" title="" data-original-title="Valor em percentagem correspondente ao peso que as provas de ingresso têm na nota de candidatura do curso que te pretendes candidatar."><sup>(?)</sup></span>Peso das Provas de Ingresso</h5>
@@ -348,6 +390,7 @@
 
         <footer class="footer text-center">
             <div class="container">
+              by AA & CD, 2017
             </div>
         </footer>
 
