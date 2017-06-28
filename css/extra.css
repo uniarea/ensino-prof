@@ -84,6 +84,9 @@ b[role=help], span[role=help] {
     cursor:help;
 }
 
+h4 {
+    padding-top: 50px;
+}
 
 /* Vertically center text inside a div (taken from CSS-tricks.com) */
 .vertically-center {
