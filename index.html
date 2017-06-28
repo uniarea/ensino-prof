@@ -196,7 +196,7 @@
             <button id="remove-subject" class="btn btn-default" onclick="removeSubject()"><i class="fa fa-minus"></i></button>
         </h5>
 
-        <h4>Provas de Ingresso</h4>
+        <h4>Exames para acesso ao ensino superior/Provas de Ingresso</h4>
         <hr>
         <div class="row">
             <div class="col-md-3 col-lg-3">
@@ -210,10 +210,10 @@
             <div class="col-lg-5 col-md-5">
                 <div class="btn-group" data-toggle="buttons">
                     <button id="option1" class="btn btn-default" onclick="setOlderTable()">
-                        <input type="radio" name="options" autocomplete="off" checked> Até 2012/13
+                        <input type="radio" name="options" autocomplete="off"> Até 2012/13
                     </button>
                     <button id="option2" class="btn btn-default active" onclick="setNewerTable()">
-                        <input type="radio" name="options"autocomplete="off"> Em/Após 2012/13
+                        <input type="radio" name="options" autocomplete="off" checked> Em/Após 2012/13
                     </button>
                 </div>
             </div>
@@ -231,59 +231,128 @@
                                 <th>Nome Disciplina</th>
                                 <th>Exame 1ª Fase</th>
                                 <th>Exame 2ª Fase</th>
+                                <th id="after1213header">Prova de ingresso</th>
                             </tr>
                         </thead>
-                        <tbody id="exams-table">
-                            <tr>
-                                <td>
-                                    <input type="radio" name="access0[]" value="yes"/> Sim
-                                    <input type="radio" name="access0[]" value="no" checked/> Não
-                                </td>
-                                <td>
-                                    <input class="subject-name" type="text" placeholder="Nome disciplina">
-                                    <td>
-                                        <input class="checker" type="checkbox" name="exam0[]">
-                                        <input class="grade" type="number" min="0" max="200" name="exam0[]" hidden>
-                                    </td>
-                                    <td>
-                                        <input class="checker" type="checkbox" name="exam0[]">
-                                        <input class="grade" type="number" min="0" max="200" name="exam0[]" hidden>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <input type="radio" name="access1[]" value="yes"/> Sim
-                                        <input type="radio" name="access1[]" value="no" checked/> Não
-                                    </td>
-                                    <td>
-                                        <input class="subject-name" type="text" placeholder="Nome disciplina">
-                                        <td>
-                                            <input class="checker" type="checkbox" name="exam1[]">
-                                            <input class="grade" type="number" min="0" max="200" name="exam1[]" hidden>
-                                        </td>
-                                        <td>
-                                            <input class="checker" type="checkbox" name="exam1[]">
-                                            <input class="grade" type="number" min="0" max="200" name="exam1[]" hidden>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <input type="radio" name="access2[]" value="yes"/> Sim
-                                            <input type="radio" name="access2[]" value="no" checked/> Não
-                                        </td>
-                                        <td>
-                                            <input class="subject-name" type="text" placeholder="Nome disciplina">
-                                        </td>
-                                        <td>
-                                            <input class="checker" type="checkbox" name="exam2[]">
-                                            <input class="grade" type="number" min="0" max="200" name="exam2[]" hidden>
-                                        </td>
-                                        <td>
-                                            <input class="checker" type="checkbox" name="exam2[]">
-                                            <input class="grade" type="number" min="0" max="200" name="exam2[]" hidden>
-                                        </td>
-                                    </tr>
-                                </tbody>
+                        <tbody id="before1213table">
+                        <tr>
+                          <td>
+                              <input type="radio" name="access0[]" value="yes"/> Sim
+                              <input type="radio" name="access0[]" value="no" checked/> Não
+                          </td>
+                          <td>
+                            <input class="subject-name" type="text" placeholder="Nome disciplina">
+                            <td>
+                                <input class="checker" type="checkbox" name="exam0[]">
+                                <input class="grade" type="number" min="0" max="200" name="exam0[]" hidden>
+                            </td>
+                            <td>
+                                <input class="checker" type="checkbox" name="exam0[]">
+                                <input class="grade" type="number" min="0" max="200" name="exam0[]" hidden>
+                            </td>
+                        </tr>
+                        <tr>
+                          <td>
+                              <input type="radio" name="access1[]" value="yes"/> Sim
+                              <input type="radio" name="access1[]" value="no" checked/> Não
+                          </td>
+                          <td>
+                            <input class="subject-name" type="text" placeholder="Nome disciplina">
+                            <td>
+                                <input class="checker" type="checkbox" name="exam1[]">
+                                <input class="grade" type="number" min="0" max="200" name="exam1[]" hidden>
+                            </td>
+                            <td>
+                                <input class="checker" type="checkbox" name="exam1[]">
+                                <input class="grade" type="number" min="0" max="200" name="exam1[]" hidden>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name="access2[]" value="yes"/> Sim
+                                <input type="radio" name="access2[]" value="no" checked/> Não
+                            </td>
+                            <td>
+                              <input class="subject-name" type="text" placeholder="Nome disciplina">
+                            </td>
+                            <td>
+                                <input class="checker" type="checkbox" name="exam2[]">
+                                <input class="grade" type="number" min="0" max="200" name="exam2[]" hidden>
+                            </td>
+                            <td>
+                                <input class="checker" type="checkbox" name="exam2[]">
+                                <input class="grade" type="number" min="0" max="200" name="exam2[]" hidden>
+                            </td>
+                        </tr>
+                      </tbody>
+                      <tbody id="after1213table">
+                        <tr>
+                          <td></td>
+                          <td>Português</td>
+                          <td><input class="checker" type="checkbox" name="exam3[]">
+                            <input class="grade" type="number" min="0" max="200" name="exam3[]" hidden>
+                          </td>
+                          <td>
+                                <input class="checker" type="checkbox" name="exam3[]">
+                                <input class="grade" type="number" min="0" max="200" name="exam3[]" hidden>
+                            </td>
+                            <td>
+                                <input type="radio" name="access3[]" value="yes"/> Sim
+                                <input type="radio" name="access3[]" value="no" checked/> Não
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                            </td>
+                            <td>Disciplina #2<b href="#" data-placement="top" data-toggle="tooltip" role="help" title="" class="small" data-original-title="Segundo o regulamento, um qualquer exame (exceto Português) entre a oferta dentro dos diferentes cursos científico-humanísticos"><sup>(?)</sup></td>
+                            <td>
+                                <input class="checker" type="checkbox" name="exam4[]">
+                                <input class="grade" type="number" min="0" max="200" name="exam4[]" hidden>
+                            </td>
+                            <td>
+                                <input class="checker" type="checkbox" name="exam4[]">
+                                <input class="grade" type="number" min="0" max="200" name="exam4[]" hidden>
+                            </td>
+                            <td>
+                                <input type="radio" name="access4[]" value="yes"/> Sim
+                                <input type="radio" name="access4[]" value="no" checked/> Não
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name="access5[]" value="yes"/> Sim
+                                <input type="radio" name="access5[]" value="no" checked/> Não
+                            </td>
+                            <td>
+                              <input class="subject-name" type="text" placeholder="Nome disciplina">
+                            </td>
+                            <td>
+                                <input class="checker" type="checkbox" name="exam5[]">
+                                <input class="grade" type="number" min="0" max="200" name="exam5[]" hidden>
+                            </td>
+                            <td>
+                                <input class="checker" type="checkbox" name="exam5[]">
+                                <input class="grade" type="number" min="0" max="200" name="exam5[]" hidden>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name="access6[]" value="yes"/> Sim
+                                <input type="radio" name="access6[]" value="no" checked/> Não
+                            </td>
+                            <td>
+                              <input class="subject-name" type="text" placeholder="Nome disciplina">
+                            </td>
+                            <td>
+                                <input class="checker" type="checkbox" name="exam6[]">
+                                <input class="grade" type="number" min="0" max="200" name="exam6[]" hidden>
+                            </td>
+                            <td>
+                                <input class="checker" type="checkbox" name="exam6[]">
+                                <input class="grade" type="number" min="0" max="200" name="exam6[]" hidden>
+                            </td>
+                        </tr>
+                      </tbody>
                             </table>
                         </div>
                     </div>

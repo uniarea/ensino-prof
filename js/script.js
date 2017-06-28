@@ -15,71 +15,12 @@ clipboard.on('error', function(e) {
 
 var nrSubjects = 10;
 var before1213 = false;
-var before1213table = $("#exams-table").html();
-var after1213table = "<tr><td></td><td>Português</td><td><input class=\"checker\" type=\"checkbox\" name=\"exam0[]\"><input class=\"grade\" type=\"number\" min=\"0\" max=\"200\" name=\"exam0[]\" hidden></td><td>\
-        <input class=\"checker\" type=\"checkbox\" name=\"exam0[]\">\
-        <input class=\"grade\" type=\"number\" min=\"0\" max=\"200\" name=\"exam0[]\" hidden>\
-    </td>\
-    <td>\
-        <input type=\"radio\" name=\"access0[]\" value=\"yes\"/> Sim\
-        <input type=\"radio\" name=\"access0[]\" value=\"no\" checked/> Não\
-    </td>\
-</tr>\
-<tr>\
-    <td>\
-    </td>\
-    <td>Disciplina #2<b href=\"#\" data-placement=\"top\" data-toggle=\"tooltip\" role=\"help\" title=\"\" class=\"small\" data-original-title=\"Segundo o regulamento, um qualquer exame (exceto Português) entre a oferta dentro dos diferentes cursos científico-humanísticos\"><sup>(?)</sup></td>\
-    <td>\
-        <input class=\"checker\" type=\"checkbox\" name=\"exam1[]\">\
-        <input class=\"grade\" type=\"number\" min=\"0\" max=\"200\" name=\"exam1[]\" hidden>\
-    </td>\
-    <td>\
-        <input class=\"checker\" type=\"checkbox\" name=\"exam1[]\">\
-        <input class=\"grade\" type=\"number\" min=\"0\" max=\"200\" name=\"exam1[]\" hidden>\
-    </td>\
-    <td>\
-        <input type=\"radio\" name=\"access1[]\" value=\"yes\"/> Sim\
-        <input type=\"radio\" name=\"access1[]\" value=\"no\" checked/> Não\
-    </td>\
-</tr>\
-<tr>\
-    <td>\
-        <input type=\"radio\" name=\"access2[]\" value=\"yes\"/> Sim\
-        <input type=\"radio\" name=\"access2[]\" value=\"no\" checked/> Não\
-    </td>\
-    <td>\
-      <input class=\"subject-name\" type=\"text\" placeholder=\"Nome disciplina\">\
-    </td>\
-    <td>\
-        <input class=\"checker\" type=\"checkbox\" name=\"exam2[]\">\
-        <input class=\"grade\" type=\"number\" min=\"0\" max=\"200\" name=\"exam2[]\" hidden>\
-    </td>\
-    <td>\
-        <input class=\"checker\" type=\"checkbox\" name=\"exam2[]\">\
-        <input class=\"grade\" type=\"number\" min=\"0\" max=\"200\" name=\"exam2[]\" hidden>\
-    </td>\
-</tr>\
-<tr>\
-    <td>\
-        <input type=\"radio\" name=\"access3[]\" value=\"yes\"/> Sim\
-        <input type=\"radio\" name=\"access3[]\" value=\"no\" checked/> Não\
-    </td>\
-    <td>\
-      <input class=\"subject-name\" type=\"text\" placeholder=\"Nome disciplina\">\
-    </td>\
-    <td>\
-        <input class=\"checker\" type=\"checkbox\" name=\"exam3[]\">\
-        <input class=\"grade\" type=\"number\" min=\"0\" max=\"200\" name=\"exam3[]\" hidden>\
-    </td>\
-    <td>\
-        <input class=\"checker\" type=\"checkbox\" name=\"exam3[]\">\
-        <input class=\"grade\" type=\"number\" min=\"0\" max=\"200\" name=\"exam3[]\" hidden>\
-    </td>\
-</tr>";
 
 $(document).ready(function() {
     //Bootstap's tooltip
     $('[data-toggle="tooltip"]').tooltip();
+
+    $("#before1213table").toggle();
 
     //Toggle grades' box when respective checkbox is clicked
     $(".checker").click(function() {
@@ -104,14 +45,18 @@ var removeSubject = function(){
 
 var setOlderTable = function(){
   if(!before1213){
-    $("#exams-table").html(before1213table);
+    $("#before1213table").toggle();
+    $("#after1213table").toggle();
+    $("#after1213header").toggle();
     before1213 = true;
   }
 }
 
 var setNewerTable = function(){
   if(before1213){
-    $("#exams-table").html("SUCKAAAAAAAAAA");
+    $("#before1213table").toggle();
+    $("#after1213table").toggle();
+    $("#after1213header").toggle();
     before1213 = false;
   }
 }
