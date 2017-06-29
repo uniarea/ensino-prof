@@ -31,7 +31,7 @@ $(document).ready(function() {
 
 var addSubject = function(){
   if(nrSubjects < 12){
-    $("#extra-subjects").append("<tr><td><input class=\"subject-name\" type=\"text\" placeholder=\"Nome disciplina\"</td><td><input class=\"grade\" min=\"1\" max=\"20\" type=\"number\" name=\"grade"+(nrSubjects-1)+"[]\" value=\"10\"/></td></tr>");
+    $("#extra-subjects").append("<tr><td><input class=\"subject-name\" type=\"text\" placeholder=\"Nome disciplina\"</td><td><input class=\"grade\" min=\"1\" max=\"20\" type=\"number\" name=\"grade"+nrSubjects+"[]\" value=\"10\"/></td></tr>");
     nrSubjects++;
   }
 }
@@ -59,6 +59,89 @@ var setNewerTable = function(){
     $("#after1213header").toggle();
     before1213 = false;
   }
+}
+
+var getUnitExams = function(index) {
+    var values = $('input[name^=exam' + index + ']').map(function(idx, elem) {
+        //if current value is a number (actually, a string that holds a number), return the value (as a number)
+        var currentValue = parseInt($(elem).val());
+        if(!isNaN(currentValue))
+            return currentValue;
+
+        //if it's not a number, it's a checkox -> get checkbox value
+        return $(elem).is(':checked');
+    }).get();
+    return values;
+}
+
+var calculateCFCwPE = function(){
+  var sum = 0;
+  for(let i = 0; i < nrSubjects; ++i)
+    sum += parseInt($('input[name^=grade'+i+']').val());
+  var mcd = Math.round(sum*10/nrSubjects)/10;
+  var fct = parseInt($('#fct-grade').val());
+  var pap = parseInt($('#pap-grade').val());
+  return Math.trunc(((2.0*mcd+0.3*fct+0.7*pap)/3)*10);
+}
+
+var calculateCFCwoPE = function(){
+  var sum = 0;
+  for(let i = 0; i < nrSubjects; ++i){
+    if(i != 4)
+      sum += parseInt($('input[name^=grade'+i+']').val());
+  }
+  var mcd = Math.round(sum*10/(nrSubjects-1))/10;
+  var fct = parseInt($('#fct-grade').val());
+  var pap = parseInt($('#pap-grade').val());
+  return Math.trunc(((2.0*mcd+0.3*fct+0.7*pap)/3)*10);
+}
+
+var calculateCFCEPEwPE = function(){
+  if(before1213)
+    return calculateCFCEPEBefore1213wPE();
+  return calculateCFCEPEAfter1213wPE();
+}
+
+var calculateCFCEPEwoPE = function(){
+  if(before1213)
+    return calculateCFCEPEBefore1213woPE();
+  return calculateCFCEPEAfter1213woPE();
+}
+
+var calculateCFCEPEBefore1213wPE = function(){
+  var result = calculateCFCwPE();
+  return [result, result];
+}
+
+var calculateCFCEPEBefore1213woPE = function(){
+  var result = calculateCFCWoPE();
+  return [result, result];
+}
+
+var calculateCFCEPEAfter1213wPE = function(){
+  var cfc = calculateCFCwPE();
+  var ptexams = getUnitExams(3);
+  var secondsubjectexams = getUnitExams(4);
+  var ptexam_firstphase = (ptexams[0] ? ptexams[1] : NaN);
+  var ptexam_secondphase = (ptexams[2] ? Math.max(ptexam_firstphase, ptexams[3]) : ptexam_firstphase);
+  var secondsubject_firstphase = (secondsubjectexams[0] ? secondsubjectexams[1] : NaN);
+  var secondsubject_secondphase = (secondsubjectexams[2] ? Math.max(secondsubject_firstphase, secondsubjectexams[3]) : secondsubject_firstphase);
+  var first_phase_cfcepe = Math.round(0.7*cfc+0.3*Math.round(0.5*(ptexam_firstphase+secondsubject_firstphase)));
+  var second_phase_cfcepe = Math.round(0.7*cfc+0.3*Math.round(0.5*(ptexam_secondphase+secondsubject_secondphase)));
+  return [first_phase_cfcepe, second_phase_cfcepe];
+}
+
+var calculateCFCEPEAfter1213woPE = function(){
+  var cfc = calculateCFCwoPE();
+  var ptexams = getUnitExams(3);
+  var secondsubjectexams = getUnitExams(4);
+  var ptexam_firstphase = (ptexams[0] ? ptexams[1] : NaN);
+  var ptexam_secondphase = (ptexams[2] ? Math.max(ptexam_firstphase, ptexams[3]) : ptexam_firstphase);
+  var secondsubject_firstphase = (secondsubjectexams[0] ? secondsubjectexams[1] : NaN);
+  var secondsubject_secondphase = (secondsubjectexams[2] ? Math.max(secondsubject_firstphase, secondsubjectexams[3]) : secondsubject_firstphase);
+  var first_phase_cfcepe = Math.round(0.7*cfc+0.3*Math.round(0.5*(ptexam_firstphase+secondsubject_firstphase)));
+  var second_phase_cfcepe = Math.round(0.7*cfc+0.3*Math.round(0.5*(ptexam_secondphase+secondsubject_secondphase)));
+  return [first_phase_cfcepe, second_phase_cfcepe];
 }
 
 //Verify input
