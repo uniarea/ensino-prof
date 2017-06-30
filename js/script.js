@@ -328,19 +328,19 @@ var saveScores = function(){
   var results = "Classificações Finais das Disciplinas:\r\n";
   var cfds = getAllGrades();
   var subjects = ["Português", "Língua Estrangeira", "Área de Integração", "TIC (ou equivalente)", "Educação Física"];
+  //NOT DETECTING EMPTY TEXT BOX
   for(let i = 5; i < nrSubjects; i++){
-    let currentName = $('#name'+i).val();
-    if(currentName != "")
-      subjects.push(currentName);
-    else
+    if(!$('#name'+i).val())
       subjects.push("Disciplina #"+i);
+    else
+      subjects.push($('#name'+i).val());
   }
   //CFDs
   for(let i = 0; i < subjects.length; i++)
       results += subjects[i] + ": " + cfds[i] + "\r\n";
 
   results += "Formação em Contexto de Trabalho: " + $("#fct-grade").val() + "\r\n";
-  results += "Prova de Aptidão Profissional: " + $("#pap-grade").val() + "\r\n";
+  results += "Prova de Aptidão Profissional: " + $("#pap-grade").val() + "\r\n\r\n";
 
   if(!before1213){
     results += "Exames obrigatórios (1ª fase | 2ª fase):\r\n";
@@ -354,12 +354,12 @@ var saveScores = function(){
     results += "Disciplina #2: " + secondsubject_firstphase + " | " + secondsubject_secondphase + "\r\n";
   }
 
-  results += "\nMédias do Ensino Secundário para Acesso ao Ensino Superior (CFCEPE):\r\n";
+  results += "\n\nMédias do Ensino Secundário para Acesso ao Ensino Superior (CFCEPE):\r\n";
   results += "(Tendo em conta que assinalaste que concluíste o secundário:)" + (before1213 ? "ANTES DE 2012/2013" : "EM/APÓS 2012/2013") + "\r\n";
 
   //Final internal score
-  var internalscores = calculateInternalScores();
-  var internalscoresport = calculateInternalScoresSport();
+  var internalscores = (before1213 ? calculateCFCEPEBefore1213woPE() : calculateCFCEPEAfter1213woPE());
+  var internalscoresport = (before1213 ? calculateCFCEPEBefore1213wPE() : calculateCFCEPEAfter1213wPE());
   for(var j = 0; j < 2; j++){
       results += j+1 + "ª Fase:\r\n";
       results += "Cursos Área Desporto: " + internalscoresport[j] + "\r\n";
