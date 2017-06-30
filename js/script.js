@@ -179,6 +179,34 @@ var calculateAccessScores = function() {
     return [firstPhase, secondPhase];
 }
 
+//Calculate final score
+var calculateFinalScore = function() {
+    var accessExamsWeight = $("#accessPercentage").val() / 100;
+    var internalScoreWeight = 1 - accessExamsWeight;
+
+    var accessScores = calculateAccessScores();
+    var internalScores = (before1213 ? calculateCFCEPEBefore1213woPE() : calculateCFCEPEAfter1213WoPE());
+
+    var firstPhase = (accessScores[0] * accessExamsWeight + internalScores[0] * internalScoreWeight).toPrecision(4);
+    var secondPhase = (accessScores[1] * accessExamsWeight + internalScores[1] * internalScoreWeight).toPrecision(4);
+
+    return [firstPhase, secondPhase];
+}
+
+//Calculate final score for SPORT courses
+var calculateFinalScoreSport = function() {
+    var accessExamsWeight = $("#accessPercentage").val() / 100;
+    var internalScoreWeight = 1 - accessExamsWeight;
+
+    var accessScores = calculateAccessScores();
+    var internalScores = (before1213 ? calculateCFCEPEBefore1213wPE() : calculateCFCEPEAfter1213wPE());
+
+    var firstPhase = (accessScores[0] * accessExamsWeight + internalScores[0] * internalScoreWeight).toPrecision(4);
+    var secondPhase = (accessScores[1] * accessExamsWeight + internalScores[1] * internalScoreWeight).toPrecision(4);
+
+    return [firstPhase, secondPhase];
+}
+
 //Verify input
 //TODO: Update to current model
 var verifyInput = function() {
