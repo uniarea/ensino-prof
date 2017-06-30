@@ -122,10 +122,10 @@ var calculateCFCEPEAfter1213wPE = function(){
   var cfc = calculateCFCwPE();
   var ptexams = getUnitExams(3);
   var secondsubjectexams = getUnitExams(4);
-  var ptexam_firstphase = (ptexams[0] ? ptexams[1] : NaN);
-  var ptexam_secondphase = (ptexams[2] ? Math.max(ptexam_firstphase, ptexams[3]) : ptexam_firstphase);
-  var secondsubject_firstphase = (secondsubjectexams[0] ? secondsubjectexams[1] : NaN);
-  var secondsubject_secondphase = (secondsubjectexams[2] ? Math.max(secondsubject_firstphase, secondsubjectexams[3]) : secondsubject_firstphase);
+  var ptexam_firstphase = ptexams[0];
+  var ptexam_secondphase = (ptexams[1] ? Math.max(ptexam_firstphase, ptexams[2]) : ptexam_firstphase);
+  var secondsubject_firstphase = secondsubjectexams[0];
+  var secondsubject_secondphase = (secondsubjectexams[1] ? Math.max(secondsubject_firstphase, secondsubjectexams[2]) : secondsubject_firstphase);
   var first_phase_cfcepe = Math.round(0.7*cfc+0.3*Math.round(0.5*(ptexam_firstphase+secondsubject_firstphase)));
   var second_phase_cfcepe = Math.round(0.7*cfc+0.3*Math.round(0.5*(ptexam_secondphase+secondsubject_secondphase)));
   return [first_phase_cfcepe, second_phase_cfcepe];
@@ -135,10 +135,10 @@ var calculateCFCEPEAfter1213woPE = function(){
   var cfc = calculateCFCwoPE();
   var ptexams = getUnitExams(3);
   var secondsubjectexams = getUnitExams(4);
-  var ptexam_firstphase = (ptexams[0] ? ptexams[1] : NaN);
-  var ptexam_secondphase = (ptexams[2] ? Math.max(ptexam_firstphase, ptexams[3]) : ptexam_firstphase);
-  var secondsubject_firstphase = (secondsubjectexams[0] ? secondsubjectexams[1] : NaN);
-  var secondsubject_secondphase = (secondsubjectexams[2] ? Math.max(secondsubject_firstphase, secondsubjectexams[3]) : secondsubject_firstphase);
+  var ptexam_firstphase = ptexams[0];
+  var ptexam_secondphase = (ptexams[1] ? Math.max(ptexam_firstphase, ptexams[2]) : ptexam_firstphase);
+  var secondsubject_firstphase = secondsubjectexams[0];
+  var secondsubject_secondphase = (secondsubjectexams[1] ? Math.max(secondsubject_firstphase, secondsubjectexams[2]) : secondsubject_firstphase);
   var first_phase_cfcepe = Math.round(0.7*cfc+0.3*Math.round(0.5*(ptexam_firstphase+secondsubject_firstphase)));
   var second_phase_cfcepe = Math.round(0.7*cfc+0.3*Math.round(0.5*(ptexam_secondphase+secondsubject_secondphase)));
   return [first_phase_cfcepe, second_phase_cfcepe];
@@ -165,12 +165,17 @@ var calculateAccessScores = function() {
     var counter = 0;
 
     for(var i = 0; i < accessValues.length; i++) {
-        console.log(firstPhase);
         var currentExams = getUnitExams(first+i);
         if(accessValues[i] == 'yes') {
             counter++;
-            firstPhase += currentExams[1]; //First Phase Exam
-            secondPhase += (currentExams[2] ? Math.max(currentExams[1], currentExams[3]) : currentExams[1]); //Max of all exams
+            if(first+i == 3 || first+i == 4){ //Special cases where 1st phase exam doesn't depend on a checkbox
+              firstPhase += currentExams[0]; //First Phase Exam
+              secondPhase += (currentExams[1] ? Math.max(currentExams[0], currentExams[2]) : currentExams[0]); //Max of all exams
+            }
+            else{
+              firstPhase += currentExams[1]; //First Phase Exam
+              secondPhase += (currentExams[2] ? Math.max(currentExams[1], currentExams[3]) : currentExams[1]); //Max of all exams
+            }
         }
     }
     firstPhase = Math.trunc((firstPhase/counter)*10)/10;
