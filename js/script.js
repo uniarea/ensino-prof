@@ -185,7 +185,7 @@ var calculateFinalScore = function() {
     var internalScoreWeight = 1 - accessExamsWeight;
 
     var accessScores = calculateAccessScores();
-    var internalScores = (before1213 ? calculateCFCEPEBefore1213woPE() : calculateCFCEPEAfter1213WoPE());
+    var internalScores = (before1213 ? calculateCFCEPEBefore1213woPE() : calculateCFCEPEAfter1213woPE());
 
     var firstPhase = (accessScores[0] * accessExamsWeight + internalScores[0] * internalScoreWeight).toPrecision(4);
     var secondPhase = (accessScores[1] * accessExamsWeight + internalScores[1] * internalScoreWeight).toPrecision(4);
@@ -281,8 +281,8 @@ var displayScores = function() {
 
     var accessExamsScore = calculateAccessScores();
 
-    var internalScores = calculateInternalScores();
-    var internalScoresSport = calculateInternalScoresSport();
+    var internalScores = before1213 ? calculateCFCEPEBefore1213woPE() : calculateCFCEPEAfter1213woPE();
+    var internalScoresSport = before1213 ? calculateCFCEPEBefore1213wPE() : calculateCFCEPEAfter1213wPE();
 
     var finalScore = calculateFinalScore();
     var finalScoreSport = calculateFinalScoreSport();
