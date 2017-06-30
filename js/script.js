@@ -217,23 +217,27 @@ var verifyInput = function() {
     //Exams' grades (0-200)
     var exams = [];
 
+    var first = (before1213 ? 0 : 3);
+    var last = (before1213 ? 2 : 6);
+
     //Access Values (Provas de Ingresso (sim-nao))
-    var accessValues = getAccessValues();
+    var accessValues = getAccessValues(first, last);
 
     //Get unit's and exams' values
-    for(var i = 0; i < 9; i++) {
+    for(var i = 0; i < nrSubjects; i++) {
         units.push($('input[name^=grade' + i + ']').map(function(idx, elem) {
             return parseInt($(elem).val());
         }).get());
-
-        exams.push(getUnitExams(i));
     }
 
-    units = steamrollArray(units).filter(function(val) {
-        return val >= 1 && val <= 21 && $.isNumeric(val);
+    for(let j = first; j <= last; j++)
+      exams.push(getUnitExams(j));
+
+    var units2 = steamrollArray(units).filter(function(val) {
+        return val >= 1 && val <= 20 && $.isNumeric(val);
     })
 
-    exams = steamrollArray(exams).filter(function(val) {
+    var exams2 = steamrollArray(exams).filter(function(val) {
         return val >= 0 && val <= 200 && $.isNumeric(val);
     })
 
@@ -244,20 +248,19 @@ var verifyInput = function() {
     var hasError = false;
     var errors = "";
 
-    // 19 and 36 -> number of input boxes
-    if(units.length != 19) {
+    if(units.length != units2.length) {
         hasError = true;
        errors += "<li>Há pelo menos uma nota de disciplina com um valor inválido.</li>";
     }
 
-    if(exams.length != 36) {
+    if((before1213 && exams2.length != 6) || (!before1213 && exams2.length != 8)) {
         hasError = true;
        errors += "<li>Há pelo menos uma nota de exame com um valor inválido.</li>";
     }
 
     if(accessValues.length == 0) {
         hasError = true;
-        errors += "<li>Tens de ter pelo menos uma disciplina marcada com \"Sim\" na coluna de <strong>Provas de Ingresso</strong>.</li>";
+        errors += "<li>Tens de ter <strong>pelo menos</strong> uma prova de ingresso.</li>";
     }
 
     if(hasError) {
@@ -267,7 +270,6 @@ var verifyInput = function() {
 }
 
 //Display scores on screen
-//TODO: Update to current model
 var displayScores = function() {
     //Reset error state
     $("#inputErrorText").empty();
