@@ -144,6 +144,41 @@ var calculateCFCEPEAfter1213woPE = function(){
   return [first_phase_cfcepe, second_phase_cfcepe];
 }
 
+//Get access values (provas de ingresso)
+var getAccessValues = function(first, last) {
+    var res = [];
+    var current = "";
+
+    for(var i = first; i <= last; i++)
+        res.push($('input[name^=access' + i + ']:checked').val());
+    return res;
+}
+
+//Calculate access exams score
+var calculateAccessScores = function() {
+    var first = (before1213 ? 0 : 3);
+    var last = (before1213 ? 2 : 6);
+    var accessValues = getAccessValues(first, last);
+
+    var firstPhase = 0;
+    var secondPhase = 0;
+    var counter = 0;
+
+    for(var i = 0; i < accessValues.length; i++) {
+        console.log(firstPhase);
+        var currentExams = getUnitExams(first+i);
+        if(accessValues[i] == 'yes') {
+            counter++;
+            firstPhase += currentExams[1]; //First Phase Exam
+            secondPhase += (currentExams[2] ? Math.max(currentExams[1], currentExams[3]) : currentExams[1]); //Max of all exams
+        }
+    }
+    firstPhase = Math.trunc((firstPhase/counter)*10)/10;
+    secondPhase = Math.trunc((secondPhase/counter)*10)/10;
+
+    return [firstPhase, secondPhase];
+}
+
 //Verify input
 //TODO: Update to current model
 var verifyInput = function() {
