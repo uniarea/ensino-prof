@@ -356,7 +356,7 @@ var saveScores = function(){
   }
 
   results += "\n\nMédias do Ensino Secundário para Acesso ao Ensino Superior (CFCEPE):\r\n";
-  results += "(Tendo em conta que assinalaste que concluíste o secundário:)" + (before1213 ? "ANTES DE 2012/2013" : "EM/APÓS 2012/2013") + "\r\n";
+  results += "(Tendo em conta que assinalaste que concluíste o secundário:" + (before1213 ? "ANTES DE 2012/2013" : "EM/APÓS 2012/2013") + ")\r\n";
 
   //Final internal score
   var internalscores = (before1213 ? calculateCFCEPEBefore1213woPE() : calculateCFCEPEAfter1213woPE());
