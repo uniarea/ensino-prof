@@ -31,7 +31,7 @@ $(document).ready(function() {
 
 var addSubject = function(){
   if(nrSubjects < 12){
-    $("#extra-subjects").append("<tr><td><input class=\"subject-name\" name=\"extra-subject-name-" + nrSubjects + "\" type=\"text\" placeholder=\"Nome disciplina\"></td><td><input class=\"grade\" min=\"1\" max=\"20\" type=\"number\" name=\"grade"+nrSubjects+"[]\" value=\"10\"/></td></tr>");
+    $("#extra-subjects").append("<tr><td><input class=\"subject-name\" name=\"extra-subject-name-" + nrSubjects + "\" type=\"text\" placeholder=\"Nome disciplina\"></td><td><input class=\"grade\" min=\"1\" max=\"20\" type=\"number\" name=\"grade"+nrSubjects+"\" value=\"10\"/></td></tr>");
     nrSubjects++;
   }
 }
@@ -77,7 +77,7 @@ var getUnitExams = function(index) {
 var calculateCFCwPE = function(){
   var sum = 0;
   for(let i = 0; i < nrSubjects; ++i)
-    sum += parseInt($('input[name^=grade'+i+']').val());
+    sum += parseInt($('input[name=grade'+i+']').val());
   var mcd = Math.round(sum*10/nrSubjects)/10;
   var fct = parseInt($('#fct-grade').val());
   var pap = parseInt($('#pap-grade').val());
@@ -88,7 +88,7 @@ var calculateCFCwoPE = function(){
   var sum = 0;
   for(let i = 0; i < nrSubjects; ++i){
     if(i != 4)
-      sum += parseInt($('input[name^=grade'+i+']').val());
+      sum += parseInt($('input[name=grade'+i+']').val());
   }
   var mcd = Math.round(sum*10/(nrSubjects-1))/10;
   var fct = parseInt($('#fct-grade').val());
@@ -230,7 +230,7 @@ var verifyInput = function() {
 
     //Get unit's and exams' values
     for(var i = 0; i < nrSubjects; i++) {
-        units.push($('input[name^=grade' + i + ']').map(function(idx, elem) {
+        units.push($('input[name=grade' + i + ']').map(function(idx, elem) {
             return parseInt($(elem).val());
         }).get());
     }
