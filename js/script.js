@@ -31,7 +31,7 @@ $(document).ready(function() {
 
 var addSubject = function(){
   if(nrSubjects < 12){
-    $("#extra-subjects").append("<tr><td><input class=\"subject-name\" type=\"text\" placeholder=\"Nome disciplina\"</td><td><input class=\"grade\" min=\"1\" max=\"20\" type=\"number\" name=\"grade"+nrSubjects+"[]\" value=\"10\"/></td></tr>");
+    $("#extra-subjects").append("<tr><td><input class=\"subject-name\" name=\"extra-subject-name-" + nrSubjects + "\" type=\"text\" placeholder=\"Nome disciplina\"></td><td><input class=\"grade\" min=\"1\" max=\"20\" type=\"number\" name=\"grade"+nrSubjects+"[]\" value=\"10\"/></td></tr>");
     nrSubjects++;
   }
 }
@@ -330,10 +330,11 @@ var saveScores = function(){
   var subjects = ["Português", "Língua Estrangeira", "Área de Integração", "TIC (ou equivalente)", "Educação Física"];
   //NOT DETECTING EMPTY TEXT BOX
   for(let i = 5; i < nrSubjects; i++){
-    if(!$('#name'+i).val())
+    let subjectName = $('input[type=text][name^=extra-subject-name-'+i+']').val();
+    if(!subjectName)
       subjects.push("Disciplina #"+i);
     else
-      subjects.push($('#name'+i).val());
+      subjects.push(subjectName);
   }
   //CFDs
   for(let i = 0; i < subjects.length; i++)
