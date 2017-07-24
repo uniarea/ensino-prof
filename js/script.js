@@ -81,7 +81,7 @@ var calculateCFCwPE = function(){
   var mcd = Math.round(sum*10/nrSubjects)/10;
   var fct = parseInt($('#fct-grade').val());
   var pap = parseInt($('#pap-grade').val());
-  return Math.trunc(((2.0*mcd+0.3*fct+0.7*pap)/3)*10);
+  return Math.trunc(((2*mcd+(3*fct+7*pap)/10)/3)*10);
 }
 
 var calculateCFCwoPE = function(){
@@ -93,7 +93,7 @@ var calculateCFCwoPE = function(){
   var mcd = Math.round(sum*10/(nrSubjects-1))/10;
   var fct = parseInt($('#fct-grade').val());
   var pap = parseInt($('#pap-grade').val());
-  return Math.trunc(((2.0*mcd+0.3*fct+0.7*pap)/3)*10);
+  return Math.trunc(((2*mcd+(3*fct+7*pap)/10)/3)*10);
 }
 
 var calculateCFCEPEwPE = function(){
@@ -126,8 +126,8 @@ var calculateCFCEPEAfter1213wPE = function(){
   var ptexam_secondphase = (ptexams[1] ? Math.max(ptexam_firstphase, ptexams[2]) : ptexam_firstphase);
   var secondsubject_firstphase = secondsubjectexams[0];
   var secondsubject_secondphase = (secondsubjectexams[1] ? Math.max(secondsubject_firstphase, secondsubjectexams[2]) : secondsubject_firstphase);
-  var first_phase_cfcepe = Math.round(0.7*cfc+0.3*Math.round(0.5*(ptexam_firstphase+secondsubject_firstphase)));
-  var second_phase_cfcepe = Math.round(0.7*cfc+0.3*Math.round(0.5*(ptexam_secondphase+secondsubject_secondphase)));
+  var first_phase_cfcepe = Math.round((7*cfc+3*Math.round((ptexam_firstphase+secondsubject_firstphase)/2))/10);
+  var second_phase_cfcepe = Math.round((7*cfc+3*Math.round((ptexam_secondphase+secondsubject_secondphase)/2)));
   return [first_phase_cfcepe, second_phase_cfcepe];
 }
 
@@ -139,8 +139,8 @@ var calculateCFCEPEAfter1213woPE = function(){
   var ptexam_secondphase = (ptexams[1] ? Math.max(ptexam_firstphase, ptexams[2]) : ptexam_firstphase);
   var secondsubject_firstphase = secondsubjectexams[0];
   var secondsubject_secondphase = (secondsubjectexams[1] ? Math.max(secondsubject_firstphase, secondsubjectexams[2]) : secondsubject_firstphase);
-  var first_phase_cfcepe = Math.round(0.7*cfc+0.3*Math.round(0.5*(ptexam_firstphase+secondsubject_firstphase)));
-  var second_phase_cfcepe = Math.round(0.7*cfc+0.3*Math.round(0.5*(ptexam_secondphase+secondsubject_secondphase)));
+  var first_phase_cfcepe = Math.round((7*cfc+3*Math.round((ptexam_firstphase+secondsubject_firstphase)/2))/10);
+  var second_phase_cfcepe = Math.round((7*cfc+3*Math.round((ptexam_secondphase+secondsubject_secondphase)/2)));
   return [first_phase_cfcepe, second_phase_cfcepe];
 }
 
