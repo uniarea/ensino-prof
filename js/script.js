@@ -127,7 +127,7 @@ var calculateCFCEPEAfter1213wPE = function(){
   var secondsubject_firstphase = secondsubjectexams[0];
   var secondsubject_secondphase = (secondsubjectexams[1] ? Math.max(secondsubject_firstphase, secondsubjectexams[2]) : secondsubject_firstphase);
   var first_phase_cfcepe = Math.round((7*cfc+3*Math.round((ptexam_firstphase+secondsubject_firstphase)/2))/10);
-  var second_phase_cfcepe = Math.round((7*cfc+3*Math.round((ptexam_secondphase+secondsubject_secondphase)/2)));
+  var second_phase_cfcepe = Math.round((7*cfc+3*Math.round((ptexam_secondphase+secondsubject_secondphase)/2))/10);
   return [first_phase_cfcepe, second_phase_cfcepe];
 }
 
@@ -140,7 +140,7 @@ var calculateCFCEPEAfter1213woPE = function(){
   var secondsubject_firstphase = secondsubjectexams[0];
   var secondsubject_secondphase = (secondsubjectexams[1] ? Math.max(secondsubject_firstphase, secondsubjectexams[2]) : secondsubject_firstphase);
   var first_phase_cfcepe = Math.round((7*cfc+3*Math.round((ptexam_firstphase+secondsubject_firstphase)/2))/10);
-  var second_phase_cfcepe = Math.round((7*cfc+3*Math.round((ptexam_secondphase+secondsubject_secondphase)/2)));
+  var second_phase_cfcepe = Math.round((7*cfc+3*Math.round((ptexam_secondphase+secondsubject_secondphase)/2))/10);
   return [first_phase_cfcepe, second_phase_cfcepe];
 }
 
