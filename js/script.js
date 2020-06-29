@@ -14,13 +14,15 @@ clipboard.on('error', function(e) {
 });
 
 var nrSubjects = 10;
-var before1213 = false;
+var before1213 = true;
 
 $(document).ready(function() {
     //Bootstap's tooltip
     $('[data-toggle="tooltip"]').tooltip();
 
-    $("#before1213table").toggle();
+    //$("#before1213table").toggle();
+    $("#after1213table").toggle();
+    $("#after1213header").toggle();
 
     //Toggle grades' box when respective checkbox is clicked
     $(".checker").click(function() {
@@ -114,7 +116,7 @@ var calculateCFCEPEBefore1213wPE = function(){
 }
 
 var calculateCFCEPEBefore1213woPE = function(){
-  var result = calculateCFCWoPE();
+  var result = calculateCFCwoPE();
   return [result, result];
 }
 
@@ -128,7 +130,8 @@ var calculateCFCEPEAfter1213wPE = function(){
   var secondsubject_secondphase = (secondsubjectexams[1] ? Math.max(secondsubject_firstphase, secondsubjectexams[2]) : secondsubject_firstphase);
   var first_phase_cfcepe = Math.round((7*cfc+3*Math.round((ptexam_firstphase+secondsubject_firstphase)/2))/10);
   var second_phase_cfcepe = Math.round((7*cfc+3*Math.round((ptexam_secondphase+secondsubject_secondphase)/2))/10);
-  return [first_phase_cfcepe, second_phase_cfcepe];
+  //return [first_phase_cfcepe, second_phase_cfcepe];
+  return [cfc, cfc];
 }
 
 var calculateCFCEPEAfter1213woPE = function(){
@@ -141,7 +144,8 @@ var calculateCFCEPEAfter1213woPE = function(){
   var secondsubject_secondphase = (secondsubjectexams[1] ? Math.max(secondsubject_firstphase, secondsubjectexams[2]) : secondsubject_firstphase);
   var first_phase_cfcepe = Math.round((7*cfc+3*Math.round((ptexam_firstphase+secondsubject_firstphase)/2))/10);
   var second_phase_cfcepe = Math.round((7*cfc+3*Math.round((ptexam_secondphase+secondsubject_secondphase)/2))/10);
-  return [first_phase_cfcepe, second_phase_cfcepe];
+  //return [first_phase_cfcepe, second_phase_cfcepe];
+  return [cfc, cfc];
 }
 
 //Get access values (provas de ingresso)
@@ -156,6 +160,7 @@ var getAccessValues = function(first, last) {
 
 //Calculate access exams score
 var calculateAccessScores = function() {
+  console.log(before1213 + " cenas");
     var first = (before1213 ? 0 : 3);
     var last = (before1213 ? 2 : 6);
     var accessValues = getAccessValues(first, last);
